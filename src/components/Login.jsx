@@ -6,8 +6,28 @@ const Login = ({ user, setUser }) => {
     const usernameRef = useRef()
     const passwordRef = useRef()
 
-    const handleLoginSubmit = () => {
+    const handleLoginSubmit = async (e) => {
+        e.preventDefault()
+        const bodyData = {
+            username: usernameRef.current.value,
+            password: passwordRef.current.value
+        }
 
+        try {
+            const response = await fetch("http://localhost:3000/api/v1/login", {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': "application/json"
+                },
+                body: JSON.stringify(bodyData)
+            })
+            const user = await response.json()
+            console.log(user)
+            setUser(user)
+        } catch (e) {
+            console.log(e.message)
+        }
     }
 
     useEffect(() => {
