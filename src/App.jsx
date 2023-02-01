@@ -1,23 +1,27 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import TodoContainer from './components/TodoContainer'
-import TodoForm from './components/TodoForm'
-import { todosArray } from './data'
+import Home from './components/Home'
+import Login from './components/Login'
 
 const App = () => {
+    const [user, setUser] = useState(null)
 
-  const [todos, setTodos] = useState([])
 
-  useEffect(() => {
-    setTodos([...todosArray])
-  }, [])
+    useEffect(() => {
+        const foundUser = JSON.parse(localStorage.getItem("user"))
+        if (foundUser) setUser(foundUser)
+    }, [])
 
-  return (
-    <div className="App space-y-12">
-      <TodoForm todos={todos} setTodos={setTodos} />
-      <TodoContainer todos={todos} setTodos={setTodos} />
-    </div>
-  )
+    return (
+        <div className="App space-y-12">
+            <Routes>
+                <Route path='/' element={<Home setUser={setUser} user={user} />} />
+                <Route path='/login' element={<Login user={user} setUser={setUser} />} />
+                {/* <Route path='/signup' element={<Register user={user} setUser={setUser} />} /> */}
+            </Routes>
+        </div>
+    )
 }
 
 export default App

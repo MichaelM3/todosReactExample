@@ -1,7 +1,7 @@
 const TodoItem = ({ title, description, deadline, completed }) => {
   return (
-    <div className="flex w-3/4">
-      <div className="border-slate-500 border-solid border-2 w-full">
+    <div className="flex">
+      <div className="border-slate-500 border-solid border-2 p-4 w-full">
         <h1>{title}</h1> 
         <p>{description}</p>
         <h2>Deadline: {deadline} days</h2>

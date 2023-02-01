@@ -1,26 +1,15 @@
 import { useRef } from "react"
 
-const TodoForm = ({ todos, setTodos }) => {
+const TodoForm = ({ handleSubmitNewTodo }) => {
 
     const titleRef = useRef()
     const descriptionRef = useRef()
     const deadlineRef = useRef()
 
-    const onClickHandler = () => {
-        const todo = {
-            title: titleRef.current.value,
-            description: descriptionRef.current.value,
-            deadline: deadlineRef.current.value,
-            completed: false
-        }
-        setTodos([todo, ...todos])
-    }
-
     return (
         <div className="flex justify-center">
             <div className="flex flex-col items-end">
                 <span>
-                    <label>Title: </label>
                     <input
                         className="h-12"
                         type="text"
@@ -29,7 +18,6 @@ const TodoForm = ({ todos, setTodos }) => {
                     />
                 </span>
                 <span>
-                    <label>Description: </label>
                     <input
                         className="h-12"
                         type="text"
@@ -38,7 +26,6 @@ const TodoForm = ({ todos, setTodos }) => {
                     />
                 </span>
                 <span>
-                    <label>Deadline: </label>
                     <input
                         className="h-12"
                         type="number"
@@ -48,7 +35,10 @@ const TodoForm = ({ todos, setTodos }) => {
                     />
                 </span>
             </div>
-            <button className="rounded-l-none" onClick={onClickHandler}>
+            <button
+                className="rounded-l-none"
+                onClick={() => handleSubmitNewTodo(titleRef.current.value, descriptionRef.current.value, deadlineRef.current.value)}
+            >
                 Submit
             </button>
         </div>
