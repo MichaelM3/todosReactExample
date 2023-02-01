@@ -4,7 +4,7 @@ const TodoItem = ({ title, description, deadline, completed }) => {
       <div className="border-slate-500 border-solid border-2 p-4 w-full">
         <h1>{title}</h1> 
         <p>{description}</p>
-        <h2>Deadline: {deadline} days</h2>
+        <h2>Deadline: {deadline}</h2>
       </div>
       <div>
         { completed ? 

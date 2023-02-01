@@ -23,8 +23,8 @@ const Login = ({ user, setUser }) => {
                 body: JSON.stringify(bodyData)
             })
             const user = await response.json()
-            console.log(user)
             setUser(user)
+            localStorage.setItem("user", JSON.stringify(user))
         } catch (e) {
             console.log(e.message)
         }
