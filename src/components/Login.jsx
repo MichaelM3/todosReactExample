@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../App'
 
-const Login = ({ user, setUser }) => {
+const Login = () => {
+    const { user, setUser } = useContext(UserContext)
     const nav = useNavigate()
     const usernameRef = useRef()
     const passwordRef = useRef()
@@ -42,12 +44,14 @@ const Login = ({ user, setUser }) => {
                     type="text"
                     placeholder='Username'
                     ref={usernameRef}
+                    defaultValue=""
                     className="p-4 rounded-xl"
                 />
                 <input
                     type="password"
                     placeholder='Password'
                     ref={passwordRef}
+                    defaultValue=""
                     className="p-4 rounded-xl"
                 />
                 <button type='submit' className='bg-blue-400'>

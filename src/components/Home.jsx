@@ -1,7 +1,10 @@
+import { useContext } from 'react'
 import TodoContainer from './TodoContainer'
 import TodoForm from './TodoForm'
+import { UserContext } from '../App'
 
-const Home = ({ user, setUser }) => {
+const Home = () => {
+    const { user, setUser } = useContext(UserContext)
 
     const handleSubmitNewTodo = (title, description, deadline) => {
         const todo = { title, description, deadline, isCompleted: false }

@@ -1,10 +1,16 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 
 const TodoForm = ({ handleSubmitNewTodo }) => {
 
     const titleRef = useRef()
     const descriptionRef = useRef()
     const deadlineRef = useRef()
+
+    useEffect(() => {
+        titleRef.current.value = ""
+        descriptionRef.current.value = ""
+        deadlineRef.current.value = ""
+    }, [handleSubmitNewTodo])
 
     return (
         <div className="flex justify-center">
@@ -13,16 +19,18 @@ const TodoForm = ({ handleSubmitNewTodo }) => {
                     <input
                         className="h-12"
                         type="text"
-                        placeholder="Enter a title..."
+                        placeholder="Title"
                         ref={titleRef}
+                        defaultValue=""
                     />
                 </span>
                 <span>
                     <input
                         className="h-12"
                         type="text"
-                        placeholder="Enter a description..."
+                        placeholder="Description"
                         ref={descriptionRef}
+                        defaultValue=""
                     />
                 </span>
                 <span>
@@ -30,8 +38,9 @@ const TodoForm = ({ handleSubmitNewTodo }) => {
                         className="h-12"
                         type="number"
                         name="deadlineRef"
-                        placeholder="Enter a deadline..."
+                        placeholder="Deadline"
                         ref={deadlineRef}
+                        defaultValue=""
                     />
                 </span>
             </div>
