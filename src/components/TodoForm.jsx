@@ -45,7 +45,7 @@ const TodoForm = ({ handleSubmitNewTodo }) => {
                 </span>
             </div>
             <button
-                className="rounded-l-none"
+                className="rounded-r-lg bg-blue-400 px-1 hover:bg-green-400"
                 onClick={() => handleSubmitNewTodo(titleRef.current.value, descriptionRef.current.value, deadlineRef.current.value)}
             >
                 Submit
