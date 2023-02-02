@@ -25,7 +25,7 @@ const Home = () => {
     return (
         <div>
             {user ?
-                <div className='flex flex-col'>
+                <div className='flex flex-col items-center pt-40'>
                     <TodoForm handleSubmitNewTodo={handleSubmitNewTodo} />
                     <TodoContainer todos={user.todos} />
                 </div>
