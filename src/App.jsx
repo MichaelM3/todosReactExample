@@ -19,6 +19,7 @@ const App = () => {
         <div className='flex flex-col p-6'>
             <UserContext.Provider value={{ user, setUser }}>
                 <Header />
+                <hr className='py-6' />
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/login' element={<Login />} />
