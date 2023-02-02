@@ -53,55 +53,57 @@ const Register = () => {
 
     useEffect(() => {
         if (error) setError(false)
-    }, [username, email, password, confirmPassword])
+    }, [form])
 
     return (
-        <div className='flex flex-col items-center justify-center bg-black rounded-3xl mx-32 py-14'>
-            <h1 className='mb-6 font-bold text-3xl text-center'>Register!</h1>
-            <form className='flex flex-col space-y-2' onSubmit={handleRegisterSubmit}>
-                <input
-                    type="text"
-                    placeholder='Username'
-                    className="p-4 rounded-xl"
-                    name="username"
-                    onChange={handleUpdateForm}
-                    value={username}
-                />
-                <input
-                    type="text"
-                    placeholder='Email'
-                    className="p-4 rounded-xl"
-                    name="email"
-                    onChange={handleUpdateForm}
-                    value={email}
-                />
-                <input
-                    type="password"
-                    placeholder='Password'
-                    className="p-4 rounded-xl"
-                    name="password"
-                    onChange={handleUpdateForm}
-                    value={password}
-                />
-                <input
-                    type="password"
-                    placeholder='Confirm Password'
-                    className="p-4 rounded-xl"
-                    name="confirmPassword"
-                    onChange={handleUpdateForm}
-                    value={confirmPassword}
-                />
-                <button type='submit' className='p-4 bg-blue-400 rounded-xl p-2 text-xl tracking-widest'>
-                    Register
-                </button>
-                {!error ?
-                    null
-                    :
-                    <span className='text-center bg-red-600 rounded-2xl p-1 bg-opacity-50'>
-                        Invalid input!
-                    </span>
-                }
-            </form>
+        <div className='flex flex-col items-center justify-center'>
+            <div className='bg-black p-12 rounded-3xl'>
+                <h1 className='mb-6 font-bold text-3xl text-center'>Register!</h1>
+                <form className='flex flex-col space-y-2' onSubmit={handleRegisterSubmit}>
+                    <input
+                        type="text"
+                        placeholder='Username'
+                        className="p-4 rounded-xl"
+                        name="username"
+                        onChange={handleUpdateForm}
+                        value={form.username}
+                    />
+                    <input
+                        type="text"
+                        placeholder='Email'
+                        className="p-4 rounded-xl"
+                        name="email"
+                        onChange={handleUpdateForm}
+                        value={form.email}
+                    />
+                    <input
+                        type="password"
+                        placeholder='Password'
+                        className="p-4 rounded-xl"
+                        name="password"
+                        onChange={handleUpdateForm}
+                        value={form.password}
+                    />
+                    <input
+                        type="password"
+                        placeholder='Confirm Password'
+                        className="p-4 rounded-xl"
+                        name="confirmPassword"
+                        onChange={handleUpdateForm}
+                        value={form.confirmPassword}
+                    />
+                    <button type='submit' className='p-4 bg-blue-400 rounded-xl p-2 text-xl tracking-widest'>
+                        Register
+                    </button>
+                    {!error ?
+                        null
+                        :
+                        <span className='text-center bg-red-600 rounded-2xl p-1 bg-opacity-50'>
+                            Invalid input!
+                        </span>
+                    }
+                </form>
+            </div>
         </div>
     )
 }

@@ -46,42 +46,44 @@ const Login = () => {
         if (error) {
             setError(false)
         }
-    }, [username, password])
+    }, [form])
 
     return (
-        <div className='flex flex-col items-center justify-center bg-black rounded-3xl mx-32 py-14'>
-            <h1 className='mb-6 font-bold text-3xl'>LOGIN!</h1>
-            <form className='flex flex-col space-y-2' onSubmit={handleLoginSubmit}>
-                <input
-                    type="text"
-                    placeholder='Username'
-                    name="username"
-                    onChange={handleUpdateForm}
-                    value={form.username}
-                    className="p-4 rounded-xl"
-                />
-                <input
-                    type="password"
-                    placeholder='Password'
-                    name="password"
-                    onChange={handleUpdateForm}
-                    value={form.password}
-                    className="p-4 rounded-xl"
-                />
-                <button
-                    type='submit'
-                    className='bg-blue-400 rounded-xl hover:bg-green-400 p-2 text-xl tracking-widest'
-                >
-                    Login
-                </button>
-                {!error ?
-                    null
-                    :
-                    <span className='text-center bg-red-600 rounded-2xl p-1 bg-opacity-50'>
-                        Incorrect username or password<br />Please try again
-                    </span>
-                }
-            </form>
+        <div className='flex flex-col items-center justify-center'>
+            <div className='bg-black p-12 rounded-3xl'>
+                <h1 className='mb-6 font-bold text-3xl text-center'>LOGIN!</h1>
+                <form className='flex flex-col space-y-2' onSubmit={handleLoginSubmit}>
+                    <input
+                        type="text"
+                        placeholder='Username'
+                        name="username"
+                        onChange={handleUpdateForm}
+                        value={form.username}
+                        className="p-4 rounded-xl"
+                    />
+                    <input
+                        type="password"
+                        placeholder='Password'
+                        name="password"
+                        onChange={handleUpdateForm}
+                        value={form.password}
+                        className="p-4 rounded-xl"
+                    />
+                    <button
+                        type='submit'
+                        className='bg-blue-400 rounded-xl hover:bg-green-400 p-2 text-xl tracking-widest'
+                    >
+                        Login
+                    </button>
+                    {!error ?
+                        null
+                        :
+                        <span className='text-center bg-red-600 rounded-2xl p-1 bg-opacity-50'>
+                            Incorrect username or password<br />Please try again
+                        </span>
+                    }
+                </form>
+            </div>
         </div>
     )
 }
