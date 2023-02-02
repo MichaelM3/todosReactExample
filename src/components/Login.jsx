@@ -42,8 +42,8 @@ const Login = () => {
     }, [username, password])
 
     return (
-        <div className='flex flex-col items-center justify-center bg-black rounded-3xl p-14'>
-            <h1 className='mb-6'>LOGIN!</h1>
+        <div className='flex flex-col items-center justify-center bg-black rounded-3xl mx-32 py-14'>
+            <h1 className='mb-6 font-bold text-3xl'>LOGIN!</h1>
             <form className='flex flex-col space-y-2' onSubmit={handleLoginSubmit}>
                 <input
                     type="text"
@@ -61,7 +61,7 @@ const Login = () => {
                 />
                 <button
                     type='submit'
-                    className='bg-blue-400 rounded-xl hover:bg-green-400'
+                    className='bg-blue-400 rounded-xl hover:bg-green-400 p-2 text-xl tracking-widest'
                 >
                     Login
                 </button>
