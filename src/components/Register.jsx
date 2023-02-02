@@ -5,19 +5,21 @@ import { UserContext } from '../App'
 const Register = () => {
     const { user, setUser } = useContext(UserContext)
     const nav = useNavigate()
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState(false)
+    const [form, setForm] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    })
 
     const handleRegisterSubmit = async (e) => {
         e.preventDefault()
-        if (username !== "" && email !== "" && password !== "" && confirmPassword !== "" && password === confirmPassword) {
+        if (form.username !== "" && form.email !== "" && form.password !== "" && form.confirmPassword !== "" && form.password === form.confirmPassword) {
             const bodyData = {
-                username,
-                email,
-                password_digest: password
+                username: form.username,
+                email: form.email,
+                password_digest: form.password
             }
 
             const response = await fetch("http://localhost:3000/api/v1/users", {
@@ -40,6 +42,11 @@ const Register = () => {
         }
     }
 
+    const handleUpdateForm = (e) => {
+        const updatedForm = { ...form, [e.target.name]: e.target.value }
+        setForm(updatedForm)
+    }
+
     useEffect(() => {
         if (user) nav("/")
     }, [user])
@@ -56,28 +63,32 @@ const Register = () => {
                     type="text"
                     placeholder='Username'
                     className="p-4 rounded-xl"
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="username"
+                    onChange={handleUpdateForm}
                     value={username}
                 />
                 <input
                     type="text"
                     placeholder='Email'
                     className="p-4 rounded-xl"
-                    onChange={(e) => setEmail(e.target.value)}
+                    name="email"
+                    onChange={handleUpdateForm}
                     value={email}
                 />
                 <input
                     type="password"
                     placeholder='Password'
                     className="p-4 rounded-xl"
-                    onChange={(e) => setPassword(e.target.value)}
+                    name="password"
+                    onChange={handleUpdateForm}
                     value={password}
                 />
                 <input
                     type="password"
                     placeholder='Confirm Password'
                     className="p-4 rounded-xl"
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    name="confirmPassword"
+                    onChange={handleUpdateForm}
                     value={confirmPassword}
                 />
                 <button type='submit' className='p-4 bg-blue-400 rounded-xl p-2 text-xl tracking-widest'>

@@ -6,8 +6,7 @@ const Login = () => {
     const { user, setUser } = useContext(UserContext)
     const nav = useNavigate()
     const [error, setError] = useState(false)
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    const [form, setForm] = useState({ username: "", password: "" })
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault()
@@ -18,7 +17,10 @@ const Login = () => {
                 'Content-Type': "application/json",
                 'Accept': "application/json"
             },
-            body: JSON.stringify({ username, password })
+            body: JSON.stringify({
+                username: form.username,
+                password: form.password
+            })
         })
         if (response.status === 200) {
             const returnedUser = await response.json()
@@ -29,6 +31,11 @@ const Login = () => {
             console.log(response)
             setError(true)
         }
+    }
+
+    const handleUpdateForm = (e) => {
+        const updatedForm = { ...form, [e.target.name]: e.target.value }
+        setForm(updatedForm)
     }
 
     useEffect(() => {
@@ -48,15 +55,17 @@ const Login = () => {
                 <input
                     type="text"
                     placeholder='Username'
-                    onChange={(e) => setUsername(e.target.value)}
-                    value={username}
+                    name="username"
+                    onChange={handleUpdateForm}
+                    value={form.username}
                     className="p-4 rounded-xl"
                 />
                 <input
                     type="password"
                     placeholder='Password'
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
+                    name="password"
+                    onChange={handleUpdateForm}
+                    value={form.password}
                     className="p-4 rounded-xl"
                 />
                 <button
