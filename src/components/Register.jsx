@@ -27,9 +27,9 @@ const Register = () => {
                 },
                 body: JSON.stringify(bodyData)
             })
-            const user = await response.json()
-            setUser(user)
-            localStorage.setItem("user", JSON.stringify(user))
+            const returnedUser = await response.json()
+            setUser(returnedUser)
+            localStorage.setItem("user", JSON.stringify(returnedUser))
         } catch (e) {
             console.log(e.message)
         }
